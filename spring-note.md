@@ -17,9 +17,13 @@ Cglib vs 动态代理
 
 事务传播行为
 * PROPAGATION_REQUIRED
+  如果外层有事务在外层事务中运行，外层没有事务就新建一个事务
 * PROPAGATION_REQUIRES_NEW
+  无论外层有没有事务都新建一个事务
 * PROPAGATION_SUPPORTS
+  如果外层有事务在外层事务中运行，外层没有事务就以非事务方式运行
 * PROPAGATION_NOT_SUPPORTED
+  无论外层有没有事务都以非事务方式运行
 * PROPAGATION_NEVER
 * PROPAGATION_NESTED
 * PROPAGATION_MANDATORY
