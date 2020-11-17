@@ -5,7 +5,7 @@
 说明：bean的创建是在容器中通过 BeanDefinition来完成的。将一个对象转换成 BeanDefinition，再放入Map中，但这里将BeanDefinition再放入Map中并不代表Bean被创建了，只是被初始化了，被标准化为BeanDefinition。
 第一阶段：标准化，创建BeanDefinition。各种各样的对象要交给spring管理，那么需要一个标准，将这个标准创建好放入Map中。
 
-第二阶段：创建Bean
+第二阶段：创建Bean，放入单例池中
 ### spring AOP
 Cglib vs 动态代理
 * Cglib底层用了ASM框架，来操作字节码生成新的类
