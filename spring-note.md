@@ -12,3 +12,14 @@ Cglib vs 动态代理
 * 动态代理只能对接口进行代理，如果要代理一个普通类，没有接口就没法使用
 * 动态代理提供了Proxy类来创建代理，Cglib提供类Enhancer来创建代理
 * 都可以用于AOP的实现
+### spring 事务
+事务说明：逻辑上的一组操作，对于每一个执行单元要么全部成功，要么全部失败。
+
+事务传播行为
+* PROPAGATION_REQUIRED
+* PROPAGATION_REQUIRES_NEW
+* PROPAGATION_SUPPORTS
+* PROPAGATION_NOT_SUPPORTED
+* PROPAGATION_NEVER
+* PROPAGATION_NESTED
+* PROPAGATION_MANDATORY
