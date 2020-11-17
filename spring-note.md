@@ -22,6 +22,6 @@ Cglib vs 动态代理
 * PROPAGATION_SUPPORTS       如果外层有事务在外层事务中运行，外层没有事务就以非事务方式运行
 * PROPAGATION_NOT_SUPPORTED  无论外层有没有事务都以非事务方式运行
 * PROPAGATION_NEVER          不支持事务，如果外层有事务就抛异常
-* PROPAGATION_NESTED
+* PROPAGATION_NESTED         当前事务回滚到某一个点，避免所有嵌套事务都回滚，即各自回滚各自的
 * PROPAGATION_MANDATORY      必须在事务中运行，如果当前没有事务就抛异常
 
