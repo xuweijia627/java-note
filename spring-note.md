@@ -16,16 +16,12 @@ Cglib vs 动态代理
 事务说明：逻辑上的一组操作，对于每一个执行单元要么全部成功，要么全部失败。
 
 事务传播行为
-```bash
-* PROPAGATION_REQUIRED
-#  如果外层有事务在外层事务中运行，外层没有事务就新建一个事务
-* PROPAGATION_REQUIRES_NEW
-  无论外层有没有事务都新建一个事务
-* PROPAGATION_SUPPORTS
-  如果外层有事务在外层事务中运行，外层没有事务就以非事务方式运行
-* PROPAGATION_NOT_SUPPORTED
-  无论外层有没有事务都以非事务方式运行
-* PROPAGATION_NEVER
+
+* PROPAGATION_REQUIRED       如果外层有事务在外层事务中运行，外层没有事务就新建一个事务
+* PROPAGATION_REQUIRES_NEW   无论外层有没有事务都新建一个事务
+* PROPAGATION_SUPPORTS       如果外层有事务在外层事务中运行，外层没有事务就以非事务方式运行
+* PROPAGATION_NOT_SUPPORTED  无论外层有没有事务都以非事务方式运行
+* PROPAGATION_NEVER          不支持事务，如果外层有事务就抛异常
 * PROPAGATION_NESTED
 * PROPAGATION_MANDATORY
-```
+
