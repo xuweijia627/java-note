@@ -5,8 +5,8 @@
 * 结果集映射
 * sql与代码解耦
 ### MyBatis核心流程三大阶段
-* 初始化阶段：读取mybatis-config.xml配置文件，构建SqlSessionFactory
-* 代理阶段：获得SqlSession，通过SqlSession获得Mapper接口对象
-* 数据处理阶段：通过SqlSession完成SQL的解析，参数的绑定，SQL的执行，结果集映射。
+* 初始化阶段：读取mybatis-config.xml配置文件，构建SqlSessionFactory，通过SqlSessionFactory创建SqlSession。
+* 代理阶段：通过SqlSession获得Mapper接口动态代理，动态代理回调SqlSession中的某一个方法，SqlSession将执行方法转发给Executor。
+* 数据处理阶段：Executor基于JDBC访问数据库，Executor通过反射将数据转为POJO返回给SqlSession，最后返回给调用者。
 
 ### MyBatis 源码底层实现原理
