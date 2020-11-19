@@ -1,3 +1,3 @@
 
 ### 1.SQL优化
-* 避免在where子句中用!= 或 <> 操作符，否则会放弃使用索引，进行全表扫描
+* 尽量使用TINYINT、SMALLINT、MEDIUM_INT作为整数类型而非INT，如果非负则加上UNSIGNED
