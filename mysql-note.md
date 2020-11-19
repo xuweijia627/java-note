@@ -11,3 +11,8 @@
 #表request_log的中content是text类型。
 select user_id, content, status, url, type from request_log where user_id = 32121;
 ```
+* gorup_concat是一个字符串聚合函数，会影响SQL的响应时间，如果返回的值过大超过了max_allowed_packet设置会导致程序报错。
+* 在select后面有子查询的情况称为内联子查询，SQL返回多少行，子查询就需要执行过多少次，严重影响SQL性能。
+```bash
+select id,(select rule_name from member_rule limit 1) as rule_name, member_id, member_type from xxx
+```
