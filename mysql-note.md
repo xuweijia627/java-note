@@ -1,5 +1,6 @@
 
 ### 1.SQL优化
+#### select检查
 * 尽量使用TINYINT、SMALLINT、MEDIUM_INT作为整数类型而非INT，如果非负则加上UNSIGNED
 * SQL语句的select后面使用了自定义函数UDF，SQL返回多少行，那么UDF函数就会被调用多少次，这是非常影响性能的。
 ```bash
@@ -16,6 +17,7 @@ select user_id, content, status, url, type from request_log where user_id = 3212
 ```bash
 select id,(select rule_name from member_rule limit 1) as rule_name, member_id, member_type from xxx
 ```
+#### from检查
 * 在MySQL中不建议使用Left Join，即使ON过滤条件列索引，一些情况也不会走索引，导致大量的数据行被扫描，SQL性能变得很差，同时要清楚ON和Where的区别。
 * 由于MySQL的基于成本的优化器CBO对子查询的处理能力比较弱，不建议使用子查询，可以改写成Inner Join。
 * 当一个字段被索引，同时出现where条件后面，是不能进行任何运算，会导致索引失效。
