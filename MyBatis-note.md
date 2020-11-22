@@ -10,3 +10,6 @@
 * 数据处理阶段：Executor基于JDBC访问数据库，Executor通过反射将数据转为POJO返回给SqlSession，最后返回给调用者。
 
 ### MyBatis 源码底层实现原理
+
+### MyBatis插件
+MyBatis采用责任链模式，通过动态代理组织多个插件，通过插件可以改变MyBatis的默认行为（诸如sql重写之类的）
