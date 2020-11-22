@@ -12,4 +12,8 @@
 ### MyBatis 源码底层实现原理
 
 ### MyBatis插件
-MyBatis采用责任链模式，通过动态代理组织多个插件，通过插件可以改变MyBatis的默认行为（诸如sql重写之类的）
+MyBatis采用责任链模式，通过动态代理组织多个插件，通过插件可以改变MyBatis的默认行为（诸如sql重写之类的），MyBatis允许使用插件拦截四大对象：
+* Executor：执行增删改查操作
+* StatementHandler：处理sql语句预编译
+* ParameterHandler：设置预编译参数
+* ResultSetHandler：处理结果集
