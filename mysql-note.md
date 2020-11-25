@@ -70,3 +70,4 @@ alter table member_info add index idx_member_name_part(member_name(10));
 #MySQL遵循的是索引最左匹配原则，对于复合索引，从左到右依次扫描索引列，到遇到第一个范围查询（>=, >,<, <=, between ….. and ….）就停止扫描，索引正确的索引顺序应该是index idx_status_create_time(status, create_time)。
 select account_no, balance from accounts where status = 1 and create_time between '2020-09-01 00:00:00' and '2020-09-30 23:59:59';
 ```
+* 时间列索引：对于默认字段created_at(create_time)、updated_at(update_time)这种默认就应该创建索引，这一般来说是默认的规则。
