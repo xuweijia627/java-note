@@ -50,8 +50,8 @@ mysql> show index from member_base_info;
 #Seq_in_index：索引中的顺序号，单列索引-都是1；复合索引-根据索引列的顺序从1开始递增。
 #Column_name：索引的列名
 #Collation：排序顺序，如果没有指定asc/desc，默认都是升序ASC。
-#Cardinality：索引基数-索引列唯一值的个数。
-索引基数指的是被索引的列唯一值的个数，唯一值越多接近表的count(*)说明索引的选择率越高，通过索引扫描的行数就越少，性能就越高，例如主键id的选择率是100%，在MySQL中尽量所有的update都使用主键id去更新，因为id是聚集索引存储着整行数据，不需要回表，性能是最高的。
+#Cardinality：索引基数-索引列唯一值的个数。索引基数指的是被索引的列唯一值的个数，唯一值越多接近表的count(*)说明索引的选择率越高，
+#通过索引扫描的行数就越少，性能就越高，例如主键id的选择率是100%，在MySQL中尽量所有的update都使用主键id去更新，因为id是聚集索引存储着整行数据，不需要回表，性能是最高的。
 
 #sub_part：前缀索引的长度；例如index (member_name(10)，长度就是10。
 #Packed：索引的组织方式，默认是NULL。
@@ -59,4 +59,9 @@ mysql> show index from member_base_info;
 #Index_type：默认是BTREE，其他的值FULLTEXT，HASH，RTREE。
 #Comment：在索引列中没有被描述的信息，例如索引被禁用。
 #Index_comment：创建索引时的备注。
+```
+* 前缀索引：对于变长字符串类型varchar(m)，为了减少key_len，可以考虑创建前缀索引，但是前缀索引不能消除group by， order by带来排序开销。
+如果字段的实际最大值比m小很多，建议缩小字段长度。
+```bash
+alter table member_info add index idx_member_name_part(member_name(10));
 ```
