@@ -32,3 +32,29 @@ select account_no, balance from accounts where balance + 100 = 10000 and status 
 * 列字符集: 从MySQL 5.6开始建议所有对象字符集应该使用用utf8mb4，包括MySQL实例字符集，数据库字符集，表字符集，列字符集。避免在关联查询Join时字段字符集不匹配导致索引失效，同时目前只有utf8mb4支持emoji表情存储。
 * 禁止使用全模糊，左模糊匹配，如果需要用搜索引擎解决
 #### group by检查
+
+#### 索引检查
+* 查看表有哪些索引：show index from table_name;
+```bash
+mysql> show index from member_base_info;
++------------------+------------+----------------------------+--------------+-------------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table            | Non_unique | Key_name                   | Seq_in_index | Column_name       | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++------------------+------------+----------------------------+--------------+-------------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| member_info |          0 | PRIMARY                    |            1 | id                | A         |      131088 | NULL     | NULL   |      | BTREE      |         |               |
+| member_info |          0 | uk_member_id               |            1 | member_id         | A         |      131824 | NULL     | NULL   |      | BTREE      |         |               |
+| member_info |          1 | idx_create_time            |            1 | create_time       | A         |        6770 | NULL     | NULL   |      | BTREE      |         |               |
++------------------+------------+----------------------------+--------------+-------------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+#Table：表名
+#Non_unique ：是否为unique index，0-是，1-否。
+#Key_name：索引名称
+#Seq_in_index：索引中的顺序号，单列索引-都是1；复合索引-根据索引列的顺序从1开始递增。
+#Column_name：索引的列名
+#Collation：排序顺序，如果没有指定asc/desc，默认都是升序ASC。
+#Cardinality：索引基数-索引列唯一值的个数。
+#sub_part：前缀索引的长度；例如index (member_name(10)，长度就是10。
+#Packed：索引的组织方式，默认是NULL。
+#Null：YES:索引列包含Null值；'':索引不包含Null值。
+#Index_type：默认是BTREE，其他的值FULLTEXT，HASH，RTREE。
+#Comment：在索引列中没有被描述的信息，例如索引被禁用。
+#Index_comment：创建索引时的备注。
+```
