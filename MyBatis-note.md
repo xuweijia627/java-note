@@ -17,3 +17,7 @@ MyBatis采用责任链模式，通过动态代理组织多个插件，通过插�
 * StatementHandler：处理sql语句预编译
 * ParameterHandler：设置预编译参数
 * ResultSetHandler：处理结果集
+
+### MyBatis 多级缓存
+* 一级缓存：即SqlSession级缓存，不同SqlSession之间互相隔离。创建SqlSession时，会创建其中的Executor，创建Executor会创建 Cache
+* 二级缓存：namespace级缓存，在同一个命名空间，不同SqlSession可以共享二级缓存
