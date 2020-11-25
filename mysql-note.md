@@ -51,6 +51,8 @@ mysql> show index from member_base_info;
 #Column_name：索引的列名
 #Collation：排序顺序，如果没有指定asc/desc，默认都是升序ASC。
 #Cardinality：索引基数-索引列唯一值的个数。
+索引基数指的是被索引的列唯一值的个数，唯一值越多接近表的count(*)说明索引的选择率越高，通过索引扫描的行数就越少，性能就越高，例如主键id的选择率是100%，在MySQL中尽量所有的update都使用主键id去更新，因为id是聚集索引存储着整行数据，不需要回表，性能是最高的。
+
 #sub_part：前缀索引的长度；例如index (member_name(10)，长度就是10。
 #Packed：索引的组织方式，默认是NULL。
 #Null：YES:索引列包含Null值；'':索引不包含Null值。
