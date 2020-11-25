@@ -30,4 +30,5 @@ select account_no, balance from accounts where balance + 100 = 10000 and status 
 ```
 * 类型转换: 对于Int类型的字段，传varchar类型的值是可以走索引，MySQL内部自动做了隐式类型转换；相反对于varchar类型字段传入Int值是无法走索引的，应该做到对应的字段类型传对应的值总是对的。
 * 列字符集: 从MySQL 5.6开始建议所有对象字符集应该使用用utf8mb4，包括MySQL实例字符集，数据库字符集，表字符集，列字符集。避免在关联查询Join时字段字符集不匹配导致索引失效，同时目前只有utf8mb4支持emoji表情存储。
+* 禁止使用全模糊，左模糊匹配，如果需要用搜索引擎解决
 #### group by检查
