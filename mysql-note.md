@@ -38,6 +38,9 @@ select account_no, balance from accounts where balance + 100 = 10000 and status 
 * 使用 ISNULL()来判断是否为 NULL 值。NULL 与任何值的直接比较都为 NULL。
 #### group by检查
 
+#### limit m,n要慎重
+对于limit m, n分页查询，越往后面翻页即m越大的情况下SQL的耗时会越来越长，对于这种应该先取出主键id，然后通过主键id跟原表进行Join关联查询。
+
 #### 索引检查(单列索引，多列索引，前缀索引，主键索引，唯一索引。从索引数据结构来看分为：聚集索引，非聚集索引)
 * 查看表有哪些索引：show index from table_name;
 ```bash
