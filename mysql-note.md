@@ -3,6 +3,8 @@
 #### 表结构检查
 * 尽量使用TINYINT、SMALLINT、MEDIUM_INT作为整数类型而非INT，如果非负则加上UNSIGNED
 * 列字符集: 从MySQL 5.6开始建议所有对象字符集应该使用用utf8mb4，包括MySQL实例字符集，数据库字符集，表字符集，列字符集。避免在关联查询Join时字段字符集不匹配导致索引失效，同时目前只有utf8mb4支持emoji表情存储。
+* 不得使用外键与级联，一切外键概念必须在应用层解决。外键影响数据库的插入速度。
+
 
 #### select检查
 * UDF用户自定义函数: SQL语句的select后面使用了自定义函数UDF，SQL返回多少行，那么UDF函数就会被调用多少次，这是非常影响性能的。
@@ -33,6 +35,7 @@ select account_no, balance from accounts where balance + 100 = 10000 and status 
 ```
 * 类型转换: 对于Int类型的字段，传varchar类型的值是可以走索引，MySQL内部自动做了隐式类型转换；相反对于varchar类型字段传入Int值是无法走索引的，应该做到对应的字段类型传对应的值总是对的。
 * 禁止使用全模糊，左模糊匹配，如果需要用搜索引擎解决
+* 使用 ISNULL()来判断是否为 NULL 值。NULL 与任何值的直接比较都为 NULL。
 #### group by检查
 
 #### 索引检查(单列索引，多列索引，前缀索引，主键索引，唯一索引。从索引数据结构来看分为：聚集索引，非聚集索引)
@@ -73,3 +76,4 @@ alter table member_info add index idx_member_name_part(member_name(10));
 select account_no, balance from accounts where status = 1 and create_time between '2020-09-01 00:00:00' and '2020-09-30 23:59:59';
 ```
 * 时间列索引：对于默认字段created_at(create_time)、updated_at(update_time)这种默认就应该创建索引，这一般来说是默认的规则。
+* 超过三个表禁止 join。需要 join 的字段，数据类型保持绝对一致；多表关联查询时，保证被关联的字段需要有索引。
