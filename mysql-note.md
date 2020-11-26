@@ -33,7 +33,7 @@ select account_no, balance from accounts where balance + 100 = 10000 and status 
 * 禁止使用全模糊，左模糊匹配，如果需要用搜索引擎解决
 #### group by检查
 
-#### 索引检查
+#### 索引检查(单列索引，多列索引，前缀索引，主键索引，唯一索引。从索引数据结构来看分为：聚集索引，非聚集索引)
 * 查看表有哪些索引：show index from table_name;
 ```bash
 mysql> show index from member_base_info;
