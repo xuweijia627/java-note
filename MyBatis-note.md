@@ -9,8 +9,6 @@
 * 代理阶段：通过SqlSession获得Mapper接口动态代理，动态代理回调SqlSession中的某一个方法，SqlSession将执行方法转发给Executor。
 * 数据处理阶段：Executor基于JDBC访问数据库，Executor通过反射将数据转为POJO返回给SqlSession，最后返回给调用者。
 
-### MyBatis 源码底层实现原理
-
 ### MyBatis插件
 MyBatis采用责任链模式，通过动态代理组织多个插件，通过插件可以改变MyBatis的默认行为（诸如sql重写之类的），MyBatis允许使用插件拦截四大对象：
 * Executor：执行增删改查操作
@@ -21,3 +19,7 @@ MyBatis采用责任链模式，通过动态代理组织多个插件，通过插�
 ### MyBatis 多级缓存
 * 一级缓存：即SqlSession级缓存，不同SqlSession之间互相隔离。创建SqlSession时，会创建其中的Executor，创建Executor会创建 Cache
 * 二级缓存：namespace级缓存，在同一个命名空间，不同SqlSession可以共享二级缓存
+### 常见问题
+* MyBatis的优缺点
+* MyBatis工作原理
+* MyBatis 有哪些执行器？ 区别是什么？
