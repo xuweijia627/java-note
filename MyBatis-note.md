@@ -25,3 +25,6 @@ MyBatis采用责任链模式，通过动态代理组织多个插件，通过插�
 * MyBatis 有哪些执行器？ 区别是什么？ SimpleExecutor, BatchExecutor，ReuseExecutor
 * MyBatis 延迟加载原理
 * #{}和${}的区别
+* MyBatis是否可以映射枚举类型
+* MyBatis分页插件原理
+* MyBatis插件运行原理
