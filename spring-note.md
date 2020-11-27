@@ -25,3 +25,6 @@ Cglib vs 动态代理
 * PROPAGATION_NESTED         当前事务回滚到某一个点，避免所有嵌套事务都回滚，即各自回滚各自的
 * PROPAGATION_MANDATORY      必须在事务中运行，如果当前没有事务就抛异常
 ### SpringBoot
+* 指定使用不同的配置文件 spring.profiles.active= dev 使用application-dev.properties配置文件
+* 在启动命令中也可以指定参数：java -jar xxx.jar --spring.profiles.active="dev"
+
