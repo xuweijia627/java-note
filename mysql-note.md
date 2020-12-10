@@ -90,3 +90,4 @@ InnoDB整体架构分为两大块：In-Memory Structures(内存结构)，On-Disk
 * In-Memory Structures：Buffer Pool，Change Buffer
 * 查询数据的过程：先从磁盘查到数据，再加载到Buffer Pool，再返回给调用者。
 * 修改数据的过程：先改Buffer Pool中的数据，再写redo log，最后修改磁盘。如果缓存池中没有这一条要修改的数据，那么会先去磁盘查出来放入缓存池再修改。所以一切修改操作都在缓存池中进行。
+* InnoDB以Page为单位将数据从磁盘中读取出来。Page默认大小为16K
