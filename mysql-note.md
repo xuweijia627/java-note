@@ -81,3 +81,6 @@ select account_no, balance from accounts where status = 1 and create_time betwee
 ```
 * 时间列索引：对于默认字段created_at(create_time)、updated_at(update_time)这种默认就应该创建索引，这一般来说是默认的规则。
 * 超过三个表禁止 join。需要 join 的字段，数据类型保持绝对一致；多表关联查询时，保证被关联的字段需要有索引。
+
+### 存储引擎
+存储引擎存在的意义：数据本身在磁盘上面，那么怎么从磁盘上查询这些数据呢？这便是储存引擎决定的，储存引擎负责实现读写接口，上层只调用读写接口，不需要关心底层怎么实现的。
