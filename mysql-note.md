@@ -86,3 +86,7 @@ select account_no, balance from accounts where status = 1 and create_time betwee
 存储引擎存在的意义：数据本身在磁盘上面，那么怎么从磁盘上查询这些数据呢？这便是储存引擎决定的，储存引擎负责实现读写接口，上层只调用读写接口，不需要关心底层怎么实现的。
 #### InnoDB
 InnoDB整体架构分为两大块：In-Memory Structures(内存结构)，On-Disk Structures(磁盘结构)
+* On-Disk Structures：表空间(存放表数据的一个空间，每一个表会对应一个文件或者多个表对应一个文件)
+* In-Memory Structures：Buffer Pool，Change Buffer
+* 查询数据的过程：先从磁盘查到数据，再加载到Buffer Pool，再返回给调用者。
+* 修改数据的过程：先改Buffer Pool中的数据，再写redo log，最后修改磁盘。
